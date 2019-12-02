@@ -25,6 +25,7 @@ function Block({ change, ...props }) {
 
   useEffect(() => {
     // Set color, signaling low priority to the scheduler
+    // Not even sure if that does anything, it seems to be OK without, too ...
     if (change) setTimeout(() => run(low, () => set(Math.round(Math.random() * 0xffffff))), Math.random() * 1000)
   }, [change])
 
