@@ -17,13 +17,14 @@ const rpi = () => Math.random() * Math.PI
 function Block({ change, ...props }) {
   const [color, set] = useState(0)
 
-  // Artificial slowdown ...
   if (color > 0) {
+    // Artificial slowdown ...
     const e = performance.now() + SLOWDOWN
     while (performance.now() < e) {}
   }
 
   useEffect(() => {
+    // Set color, signaling low priority to the scheduler
     if (change) setTimeout(() => run(low, () => set(Math.round(Math.random() * 0xffffff))), Math.random() * 1000)
   }, [change])
 
@@ -78,9 +79,7 @@ function Box() {
   let t = 0
   const mesh = useRef()
   const [coords] = useState(() => [rpi(), rpi(), rpi()])
-  useFrame(
-    ({ clock }) => mesh.current && mesh.current.rotation.set(coords[0] + (t += 0.01), coords[1] + t, coords[2] + t),
-  )
+  useFrame(({ clock }) => mesh.current.rotation.set(coords[0] + (t += 0.01), coords[1] + t, coords[2] + t))
   return <mesh ref={mesh} geometry={geom} material={matr} scale={[2, 2, 2]} />
 }
 
