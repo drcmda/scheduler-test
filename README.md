@@ -1,68 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    yarn
+    yarn start
+    
+Demo: http://undesirable-bucket.surge.sh/ (see below, scheduler appears to be broken currently)
 
-## Available Scripts
+# ⚠️
 
-In the project directory, you can run:
+It depends on `react@experimental`, `react-reconciler@experimental` and `scheduler@experimental`, all three are *highly experimental*, as the tag suggests.
 
-### `yarn start`
+# Explanation
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project creates a slightly taxing environment for the [react scheduler](https://www.youtube.com/watch?v=nLF0n9SACd4).
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### High priority
 
-### `yarn test`
+It creates a higher prioritized spinning ball of boxgeometry. It is expected that it spins smoothly overall.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Low priority
 
-### `yarn build`
+It also creates a lower prioritized cluster of colored blocks that simulate load. Each block throws a 5ms delay into the render function, thereby blocking it. The potential total load per frame can be up to 500ms (unscheduled). In an interval each block will change state (the color), which again will hit the delay. The slowdown is mandatory, it would make the test pointless without it. It simulates components that have heavy setup phases. 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+As a real world example: THREE.TextGeometry takes a long time to process. No framework can magically make it go faster. But a scheduler can balance the load and keep the main-thread responsive in order to avoid jank.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+It is expected that the blocks change color, but they should not be dragging down the framerate.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Expectations
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The scheduler has to keep a stable framerate first and foremost. And it should be able to discern between important updates and updates that are of lesser importance. It also has to take the environment into account, since threejs runs on the same thread.

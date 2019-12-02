@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  overflow: hidden;
+}
+
+.fps {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  color: #efefef;
+  font-family: monospace;
+  font-size: 1.75em;
+  width: 300px;
+}
