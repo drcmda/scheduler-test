@@ -1,7 +1,7 @@
     yarn
     yarn start
     
-Demo: http://undesirable-bucket.surge.sh/ (see below, scheduler appears to be broken currently)
+Demo: http://undesirable-bucket.surge.sh
 
 # ⚠️
 
