@@ -22,9 +22,7 @@ It creates a higher prioritized spinning ball of boxgeometry. It is expected tha
 
 ### Low priority
 
-It also creates a lower prioritized cluster of colored blocks that simulate load. Each block throws a 5ms delay into the render function, thereby blocking it. The potential total load per frame can be up to 500ms (unscheduled). In an interval each block will change state (the color), which again will hit the delay. The slowdown is mandatory, it would make the test pointless without it. It simulates components that have heavy setup phases. 
-
-As a real world example: THREE.TextGeometry takes a long time to process. No framework can magically make it go faster. But a scheduler can balance the load and keep the main-thread responsive in order to avoid jank.
+It also creates a lower prioritized cluster of colored blocks that simulate load. Each block throws a delay into the render function, thereby blocking it. The potential total load per frame can be up to 600ms (unscheduled). In an interval each block will change state (the color), which again will hit the delay. The slowdown is mandatory, it would make the test pointless without it. It simulates components that have heavy setup phases. 
 
 It is expected that the blocks change color, but they should not be dragging down the framerate.
 
