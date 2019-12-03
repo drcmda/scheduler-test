@@ -12,7 +12,7 @@ Demo: http://undesirable-bucket.surge.sh
 
 # ⚠️
 
-It depends on `react@experimental`, `react-reconciler@experimental` and `scheduler@experimental`, all three are *highly experimental*, as the tag suggests. Nothing can be taken for granted, everything can change.
+It depends on `react@experimental`, `react-reconciler@experimental` and `scheduler@experimental`, all three are *highly experimental*, as the tag suggests.
 
 # Explanation
 
