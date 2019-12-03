@@ -2,7 +2,6 @@
   <img width="400" src="https://i.imgur.com/FwFaeRp.png" />
 </p>
 <br />
-<br />
 
 Demo: http://undesirable-bucket.surge.sh
 
