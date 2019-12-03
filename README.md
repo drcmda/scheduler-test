@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="500" src="https://i.imgur.com/B8QPFxY.png" />
+</p>
+
     yarn
     yarn start
     
