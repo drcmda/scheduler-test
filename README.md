@@ -5,10 +5,10 @@
 <br />
 <br />
 
+Demo: http://undesirable-bucket.surge.sh
+
     yarn
     yarn start
-    
-Demo: http://undesirable-bucket.surge.sh
 
 # ⚠️
 
