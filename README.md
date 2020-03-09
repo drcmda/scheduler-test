@@ -14,7 +14,7 @@ It depends on `react@experimental`, `react-reconciler@experimental` and `schedul
 
 # Explanation
 
-This project creates a slightly taxing environment for the [react scheduler](https://www.youtube.com/watch?v=nLF0n9SACd4).
+This project creates a slightly taxing environment for the [react scheduler](https://www.youtube.com/watch?v=nLF0n9SACd4) in concurrent mode.
 
 ### High priority
 
