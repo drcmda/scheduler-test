@@ -22,8 +22,7 @@ It creates a higher prioritized spinning ball of boxgeometry. It is expected tha
 
 ### Low priority
 
-It also creates a lower prioritized cluster of colored blocks that simulate load. Each block throws a delay into the render function, thereby blocking it. The potential total load per frame can be up to 600ms (unscheduled). In an interval each block will change state (the color), which again will hit the delay. The slowdown is mandatory, it would make the test pointless without it. It simulates components that have heavy setup phases. 
-
+It also creates a lower prioritized cluster of colored blocks that simulate heavy load. Each block delays the render function, thereby blocking the main thread. The potential load, all blocks considered, is 600ms. The blocks will go through that every 2 seconds.
 It is expected that the blocks change color, but they should not be dragging down the framerate.
 
 ### Expectations
