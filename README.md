@@ -14,7 +14,7 @@ It depends on `react@experimental`, `react-reconciler@experimental` and `schedul
 
 # Explanation
 
-This project creates a slightly taxing environment for the [react scheduler](https://www.youtube.com/watch?v=nLF0n9SACd4) in concurrent mode.
+This project creates a highly taxing environment for [react-three-fiber](https://github.com/pmndrs/react-three-fiber) and the [react scheduler](https://www.youtube.com/watch?v=nLF0n9SACd4) in concurrent mode.
 
 ### High priority
 
@@ -22,8 +22,7 @@ It creates a higher prioritized spinning ball of boxgeometry. It is expected tha
 
 ### Low priority
 
-It also creates a lower prioritized cluster of colored blocks that simulate heavy load. Each block delays the render function, thereby blocking the main thread. The potential load, all blocks considered, is 600ms. The blocks will go through that every 2 seconds.
-It is expected that the blocks change color, but they should not be dragging down the framerate.
+It also creates a lower prioritized cluster of colored blocks that simulate heavy load. Each block delays the render function, thereby blocking the main thread. The potential load, all blocks considered, is 600ms. The blocks will go through that every 2 seconds. It is expected that the blocks change color, but they should not be dragging down the framerate.
 
 ### Expectations
 
