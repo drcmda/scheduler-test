@@ -50,6 +50,8 @@ There are two modes:
 - Distributed: the app will randomly spread the creation of all instances over a second, by the end of which all instances will be created. This simulates ongoing stress,
 - At-once (distributed is off): all instances will be created at once, which is the worst case scenario.
 
+Every time a block is being regenerated it flashes up red.
+
 ### Observations and stats (Apple M1)
 
 Plain Threejs is simulated when `concurrent` is off, otherwise React will run in concurrent mode.
