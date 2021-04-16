@@ -62,6 +62,6 @@ Plain Threejs is simulated when `concurrent` is off, otherwise React will run in
 
 ### How?
 
-React can do this because of concurrent-mode, which is React-futures new scheduler. Think of how a virtual list schedules its items, no matter if you give it 10 or 10.000.000, it will render only as much as the screen can take. But React does this at the system level, *every* operation is weighed. Ff operations would start to bite into the framerate React will balance them.
+React can do this because of concurrent-mode, which is React-futures new scheduler. Think of how a virtual list schedules its items, no matter if you give it 10 or 10.000.000, it will render only as much as the screen can take. But React does this at the system level, *every* operation is weighed. If operations would start to bite into the framerate React must balance them.
 
 To get anything even remotely similar in user-land would be a massive endevour, think of the repercussions: race conditions, async ops, everything must still go on.
