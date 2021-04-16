@@ -1,6 +1,6 @@
 import * as THREE from "three";
-import React, { Suspense, useRef, useState, useEffect, useMemo, useLayoutEffect } from "react";
-import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
+import React, { Suspense, useRef, useState, useEffect, useLayoutEffect } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useControls } from "leva";
 import { Stats } from "@react-three/drei";
 import Text from "./components/Text";
@@ -11,6 +11,7 @@ const geom = new THREE.PlaneGeometry(1, 1);
 const vec = new THREE.Color();
 const chars = `!"§$%&/()=?*#<>-_.:,;+0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`;
 
+/*
 async function test() {
   const font = await new Promise((res) => new THREE.FontLoader().load("/Inter UI_Bold.json", res));
   console.time("test");
@@ -26,6 +27,7 @@ async function test() {
   console.timeEnd("test");
 }
 test();
+*/
 
 // Each block creates a text-geometry
 function Block({ distribute, change, ...props }) {
