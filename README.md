@@ -60,8 +60,8 @@ Plain Threejs is simulated when `concurrent` is off, otherwise React will run in
 | React   | ~60fps      | ~60fps  |
 
 <p align="center">
-<img src="/assets/three-distributed.jpg" width="450"><img src="/assets/three-at-once.jpg" width="450">
-<img src="/assets/react-distributed.jpg" width="450"><img src="/assets/react-at-once.jpg" width="450">
+<img src="/assets/three-distributed.jpg" width="420"><img src="/assets/three-at-once.jpg" width="420">
+<img src="/assets/react-distributed.jpg" width="420"><img src="/assets/react-at-once.jpg" width="420">
 </p>
 
 ### How?
