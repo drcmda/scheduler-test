@@ -3,14 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^0.0.0-experimental-b53ea6ca0",
-    "react-dom": "^16.12.0",
-    "react-reconciler": "^0.0.0-experimental-b53ea6ca0",
-    "react-scripts": "3.2.0",
+    "@react-three/drei": "^4.1.8",
+    "@react-three/fiber": "^6.0.14",
+    "leva": "^0.9.7",
+    "r3f-perf": "^2.0.4",
+    "react": "^0.0.0-experimental-11b07597e",
+    "react-dom": "^0.0.0-experimental-11b07597e",
+    "react-reconciler": "^0.0.0-experimental-11b07597e",
+    "react-scripts": "4.0.3",
     "react-three-fiber": "^4.0.0-beta.9",
     "react-three-gui": "^0.1.5",
-    "scheduler": "^0.0.0-experimental-b53ea6ca0",
-    "three": "^0.111.0"
+    "scheduler": "^0.0.0-experimental-11b07597e",
+    "three": "^0.127.0"
   },
   "scripts": {
     "start": "react-scripts start",

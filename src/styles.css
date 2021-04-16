@@ -1,3 +1,5 @@
+@import url("https://rsms.me/inter/inter.css");
+
 * {
   box-sizing: border-box;
 }
@@ -13,12 +15,13 @@ body,
   overflow: hidden;
 }
 
+body {
+  font-family: "Inter var", sans-serif;
+}
+
 .fps {
-  position: fixed;
-  top: 30px;
-  left: 30px;
-  color: #efefef;
-  font-family: monospace;
-  font-size: 1.75em;
-  width: 300px;
+  left: 50%!important;
+  top: 50%!important;
+  transform: translate3d(-50%, -50%, 0) scale(5);
+  image-rendering: pixelated;
 }
