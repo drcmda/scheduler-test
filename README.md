@@ -14,16 +14,54 @@ It depends on `react@experimental`, `react-reconciler@experimental` and `schedul
 
 # Explanation
 
-This project creates a highly taxing environment for [react-three-fiber](https://github.com/pmndrs/react-three-fiber) and the [react scheduler](https://www.youtube.com/watch?v=nLF0n9SACd4) in concurrent mode.
+This project creates a highly taxing environment for [react-three-fiber](https://github.com/pmndrs/react-three-fiber) and the [react scheduler](https://www.youtube.com/watch?v=nLF0n9SACd4).
 
-### High priority
+It simulates heavy load by creating hundreds of THREE.TextGeometry instances (510 to be exact). This class, like many others in Threejs, is expensive and takes a while to construct. If all 510 instances are created the same time it will cause 1085.77685546875ms of pure jank (Apple M1), the tab would normally freeze.
 
-It creates a higher prioritized spinning ball of boxgeometry. It is expected that it spins smoothly overall.
+You can try it yourself, here is a framework-independent stress-test that does exactly what this project is doing:
 
-### Low priority
+```jsx
+async function test() {
+  const chars = `!"§$%&/()=?*#<>-_.:,;+0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`;
+  const font = await new Promise((res) => new THREE.FontLoader().load("/Inter UI_Bold.json", res));
+  console.time("test");
+  for (let i = 0; i < 510; i++) {
+    new THREE.TextGeometry(chars[Math.floor(Math.random() * chars.length)], {
+      font,
+      size: 1,
+      height: 0.5,
+      curveSegments: 80,
+      bevelEnabled: false,
+    });
+  }
+  console.timeEnd("test");
+}
+test();
+```
 
-It also creates a lower prioritized cluster of colored blocks that simulate heavy load. Each block delays the render function, thereby blocking the main thread. The potential load, all blocks considered, is 600ms. The blocks will go through that every 2 seconds. It is expected that the blocks change color, but they should not be dragging down the framerate.
+There is no chance that Threejs or any application or framework for that matter can take that amount of load on a single thread (you can ~16ms per frame for calculations max).
 
-### Expectations
+# Expectation
 
-The scheduler has to keep a stable framerate first and foremost. And it should be able to discern between important updates and updates that are of lesser importance. It also has to take the environment into account, since threejs runs on the same thread.
+Reacts task here is to balance that load so that a stable 60 frames/second can *always* be maintained. **510 instances will be re-created every 2 seconds.**
+
+There are two modes:
+
+- Distributed: the app will randomly spread the creation of all instances over a second, by the end of which all instances will be created. This simulates ongoing stress,
+- At-once (distributed is off): all instances will be created at once, which is the worst case scenario.
+
+
+### Observations and stats (Apple M1)
+
+Plain Threejs is simulated when `concurrent` is off, otherwise React will run in concurrent mode.
+
+|  | Distributed | At-once |
+| ------------- | ------------- | ------------- |
+| Threejs  | ~10fps  | ~5fps |
+| React  | ~60fps  | ~60fps |
+
+### How?
+
+React can do this because of concurrent-mode, which is React-futures new scheduler. Think of how a virtual list schedules its items, no matter if you give it 10 or 10.000.000, it will render only as much as the screen can take. But React does this at the system level, *every* operation is weighed. Ff operations would start to bite into the framerate React will balance them.
+
+To get anything even remotely similar in user-land would be a massive endevour, think of the repercussions: race conditions, async ops, everything must still go on.

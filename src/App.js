@@ -11,6 +11,22 @@ const geom = new THREE.PlaneGeometry(1, 1);
 const vec = new THREE.Color();
 const chars = `!"§$%&/()=?*#<>-_.:,;+0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`;
 
+async function test() {
+  const font = await new Promise((res) => new THREE.FontLoader().load("/Inter UI_Bold.json", res));
+  console.time("test");
+  for (let i = 0; i < 510; i++) {
+    new THREE.TextGeometry(chars[Math.floor(Math.random() * chars.length)], {
+      font,
+      size: 1,
+      height: 0.5,
+      curveSegments: 80,
+      bevelEnabled: false,
+    });
+  }
+  console.timeEnd("test");
+}
+test();
+
 // Each block creates a text-geometry
 function Block({ distribute, change, ...props }) {
   const mat = useRef();

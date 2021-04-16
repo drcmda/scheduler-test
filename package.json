@@ -11,8 +11,6 @@
     "react-dom": "^0.0.0-experimental-11b07597e",
     "react-reconciler": "^0.0.0-experimental-11b07597e",
     "react-scripts": "4.0.3",
-    "react-three-fiber": "^4.0.0-beta.9",
-    "react-three-gui": "^0.1.5",
     "scheduler": "^0.0.0-experimental-11b07597e",
     "three": "^0.127.0"
   },
@@ -36,5 +34,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/helper-builder-react-jsx": "^7.12.13"
   }
 }
