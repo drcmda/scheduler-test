@@ -45,7 +45,7 @@ There is no chance that Threejs or any application or framework for that matter 
 
 # Expectation
 
-Reacts task here is to balance that load so that a stable 60 frames/second can _always_ be maintained. **510 instances will be re-created every 2 seconds.**
+Reacts task here is to balance that load so that more or less 60 frames/second can _always_ be maintained. **510 instances will be re-created every 2 seconds.** If it actually hits 60 fps still depends on your machine and GPU, these are a lot of drawcalls after all, but at least the frame rate must be stable.
 
 There are two modes:
 
