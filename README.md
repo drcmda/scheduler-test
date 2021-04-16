@@ -56,7 +56,7 @@ Plain Threejs is simulated when `concurrent` is off, otherwise React will run in
 
 |         | Distributed | At-once |
 | ------- | ----------- | ------- |
-| Threejs | ~10fps      | ~5fps   |
+| Threejs | ~14fps      | ~3fps   |
 | React   | ~60fps      | ~60fps  |
 
 <p align="center">
