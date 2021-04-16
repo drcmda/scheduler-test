@@ -41,7 +41,7 @@ async function test() {
 test();
 ```
 
-There is no chance that Threejs or any application or framework for that matter can take that amount of load on a single thread (you can ~16ms per frame for calculations max).
+There is no chance that Threejs or any application or framework for that matter can take that amount of load on a single thread (you can have ~16ms per frame for calculations more or less).
 
 # Expectation
 
