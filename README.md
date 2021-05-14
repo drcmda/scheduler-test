@@ -12,11 +12,11 @@ Demo: http://undesirable-bucket.surge.sh
 
 # ⚠️
 
-It depends on `react@experimental`, `react-reconciler@experimental` and `scheduler@experimental`, all three are _highly experimental_, as the tag suggests.
+It depends on `react@experimental`, `react-reconciler@experimental` and `scheduler@experimental`.
 
 # Explanation
 
-This project creates a highly taxing environment for [react-three-fiber](https://github.com/pmndrs/react-three-fiber) and the [react scheduler](https://www.youtube.com/watch?v=nLF0n9SACd4).
+This project creates a highly taxing environment for react, in this case [react-three-fiber](https://github.com/pmndrs/react-three-fiber).
 
 It simulates heavy load by creating hundreds of THREE.TextGeometry instances (510 to be exact). This class, like many others in Threejs, is expensive and takes a while to construct. If all 510 instances are created the same time **it will cause approximately 1.5 seconds of pure jank** (Apple M1), the tab would normally freeze. It runs in a loop and **will execute every 2 seconds**. 
 
@@ -76,6 +76,8 @@ Plain Threejs is simulated when `concurrent` is off, otherwise React will run in
 
 React can do this because of concurrent-mode, which is React-futures new scheduler. Think of how a virtual list schedules its items, no matter if you give it 10 or 10.000.000, it will render only as much as the screen can take. But React does this at the system level, _every_ operation is weighed. If operations would start to bite into the framerate React must balance them.
 
+Watch this talk by Dan Abramov if you want to know how it works: https://www.youtube.com/watch?v=nLF0n9SACd4
+
 ### Can this be done without React?
 
-To get anything even remotely similar in user-land would be an endevour to say the least. This is not just simple requestIdleFrame and defer, think of the repercussions: mount/unmount race conditions, async ops, everything must still function.
+To get anything even remotely similar in user-land would be an endevour to say the least. This is not just simple requestIdleFrame and defer, think of the repercussions: mount/unmount race conditions, async ops, everything must still function in scale.
