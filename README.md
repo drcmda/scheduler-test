@@ -18,9 +18,9 @@ It depends on `react@experimental`, `react-reconciler@experimental` and `schedul
 
 This project creates a highly taxing environment for [react-three-fiber](https://github.com/pmndrs/react-three-fiber) and the [react scheduler](https://www.youtube.com/watch?v=nLF0n9SACd4).
 
-It simulates heavy load by creating hundreds of THREE.TextGeometry instances (510 to be exact). This class, like many others in Threejs, is expensive and takes a while to construct. If all 510 instances are created the same time **it will cause approximately 1.5 seconds of pure jank** (Apple M1), the tab would normally freeze. It runs in a loop and **will execute every 2 seconds**.
+It simulates heavy load by creating hundreds of THREE.TextGeometry instances (510 to be exact). This class, like many others in Threejs, is expensive and takes a while to construct. If all 510 instances are created the same time **it will cause approximately 1.5 seconds of pure jank** (Apple M1), the tab would normally freeze. It runs in a loop and **will execute every 2 seconds**. 
 
-You can try it yourself, here is a framework-independent stress-test that does exactly what this project is doing:
+Here is a framework-independent stress-test that does exactly what this project is doing:
 
 ```jsx
 async function test() {
@@ -42,7 +42,7 @@ async function test() {
 setInterval(test, 2000)
 ```
 
-You can copy `/Inter UI_Bold.json` from this repo to make it work. There is no chance that Threejs or any application or framework for that matter can take that amount of load on a single thread (you can have ~16ms per frame for calculations more or less).
+Try it out yourself: https://codesandbox.io/s/distracted-hypatia-6kqxh?file=/src/index.js
 
 # Expectation
 
