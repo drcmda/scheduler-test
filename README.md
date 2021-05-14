@@ -25,7 +25,7 @@ Here is a framework-independent stress-test that does exactly what this project 
 ```jsx
 async function test() {
   const chars = `!"§$%&/()=?*#<>-_.:,;+0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`
-  const font = await new Promise((res) => new THREE.FontLoader().load("/Inter UI_Bold.json", res))
+  const font = await new Promise((res) => new THREE.FontLoader().load("https://raw.githubusercontent.com/drcmda/scheduler-test/master/public/Inter%20UI_Bold.json", res))
   console.time("test")
   for (let i = 0; i < 510; i++) {
     new THREE.TextGeometry(chars[Math.floor(Math.random() * chars.length)], {
@@ -39,7 +39,10 @@ async function test() {
   console.timeEnd("test")
 }
 
-setInterval(test, 2000)
+test()
+
+// To really drive it home you'd have to repeat it every two seconds ...
+// setInterval(test, 2000)
 ```
 
 Try it out yourself: https://codesandbox.io/s/distracted-hypatia-6kqxh?file=/src/index.js
