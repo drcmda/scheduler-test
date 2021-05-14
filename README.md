@@ -39,7 +39,7 @@ async function test() {
   console.timeEnd("test")
 }
 
-setIntervall(test, 2000)
+setInterval(test, 2000)
 ```
 
 You can copy `/Inter UI_Bold.json` from this repo to make it work. There is no chance that Threejs or any application or framework for that matter can take that amount of load on a single thread (you can have ~16ms per frame for calculations more or less).
