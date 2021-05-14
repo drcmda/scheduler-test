@@ -18,7 +18,7 @@ It depends on `react@experimental`, `react-reconciler@experimental` and `schedul
 
 This project creates a highly taxing environment for [react-three-fiber](https://github.com/pmndrs/react-three-fiber) and the [react scheduler](https://www.youtube.com/watch?v=nLF0n9SACd4).
 
-It simulates heavy load by creating hundreds of THREE.TextGeometry instances (510 to be exact). This class, like many others in Threejs, is expensive and takes a while to construct. If all 510 instances are created the same time **it will cause approximately a second of pure jank** (Apple M1), the tab would normally freeze. It runs in a loop and **will execute every 2 seconds**.
+It simulates heavy load by creating hundreds of THREE.TextGeometry instances (510 to be exact). This class, like many others in Threejs, is expensive and takes a while to construct. If all 510 instances are created the same time **it will cause approximately 1.5 seconds of pure jank** (Apple M1), the tab would normally freeze. It runs in a loop and **will execute every 2 seconds**.
 
 You can try it yourself, here is a framework-independent stress-test that does exactly what this project is doing:
 
