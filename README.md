@@ -24,9 +24,9 @@ You can try it yourself, here is a framework-independent stress-test that does e
 
 ```jsx
 async function test() {
-  const chars = `!"§$%&/()=?*#<>-_.:,;+0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`;
-  const font = await new Promise((res) => new THREE.FontLoader().load("/Inter UI_Bold.json", res));
-  console.time("test");
+  const chars = `!"§$%&/()=?*#<>-_.:,;+0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`
+  const font = await new Promise((res) => new THREE.FontLoader().load("/Inter UI_Bold.json", res))
+  console.time("test")
   for (let i = 0; i < 510; i++) {
     new THREE.TextGeometry(chars[Math.floor(Math.random() * chars.length)], {
       font,
@@ -34,11 +34,12 @@ async function test() {
       height: 0.5,
       curveSegments: 80,
       bevelEnabled: false,
-    });
+    })
   }
-  console.timeEnd("test");
+  console.timeEnd("test")
 }
-test();
+
+setIntervall(test, 2000)
 ```
 
 You can copy `/Inter UI_Bold.json` from this repo to make it work. There is no chance that Threejs or any application or framework for that matter can take that amount of load on a single thread (you can have ~16ms per frame for calculations more or less).
