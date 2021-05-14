@@ -20,7 +20,7 @@ This project creates a highly taxing environment for react, in this case [react-
 
 It simulates heavy load by creating hundreds of THREE.TextGeometry instances (510 to be exact). This class, like many others in Threejs, is expensive and takes a while to construct. If all 510 instances are created the same time **it will cause approximately 1.5 seconds of pure jank** (Apple M1), the tab would normally freeze. It runs in a loop and **will execute every 2 seconds**. 
 
-Here is a framework-independent stress-test that does exactly what this project is doing:
+This is the framework-independent vanilla stress-test:
 
 ```jsx
 async function test() {
